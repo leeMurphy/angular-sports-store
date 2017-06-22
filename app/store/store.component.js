@@ -9,17 +9,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 const core_1 = require("@angular/core");
-const platform_browser_1 = require("@angular/platform-browser");
-const app_component_1 = require("./app.component");
-const store_module_1 = require("./store/store.module");
-let AppModule = class AppModule {
+const product_repository_1 = require("../model/product.repository");
+let StoreComponent = class StoreComponent {
+    constructor(repository) {
+        this.repository = repository;
+    }
+    get products() {
+        return this.repository.getProducts();
+    }
+    get categories() {
+        return this.repository.getCategories();
+    }
 };
-AppModule = __decorate([
-    core_1.NgModule({
-        imports: [platform_browser_1.BrowserModule, store_module_1.StoreModule],
-        declarations: [app_component_1.AppComponent],
-        bootstrap: [app_component_1.AppComponent]
+StoreComponent = __decorate([
+    core_1.Component({
+        selector: "store",
+        moduleId: module.id,
+        templateUrl: "store.component.html"
     }), 
-    __metadata('design:paramtypes', [])
-], AppModule);
-exports.AppModule = AppModule;
+    __metadata('design:paramtypes', [product_repository_1.ProductRepository])
+], StoreComponent);
+exports.StoreComponent = StoreComponent;

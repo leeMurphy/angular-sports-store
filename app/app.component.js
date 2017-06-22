@@ -14,9 +14,7 @@ let AppComponent = class AppComponent {
 AppComponent = __decorate([
     core_1.Component({
         selector: "app",
-        template: `<div class="bg-success p-a-1 text-xs-center">
-                    This is SportsStore
-                </div>`
+        template: "<store></store>"
     }), 
     __metadata('design:paramtypes', [])
 ], AppComponent);
