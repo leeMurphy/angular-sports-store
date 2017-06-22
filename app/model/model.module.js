@@ -9,16 +9,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 const core_1 = require("@angular/core");
-const platform_browser_1 = require("@angular/platform-browser");
-const app_component_1 = require("./app.component");
-let AppModule = class AppModule {
+const product_repository_1 = require("./product.repository");
+const static_datasource_1 = require("./static.datasource");
+let ModelModule = class ModelModule {
 };
-AppModule = __decorate([
+ModelModule = __decorate([
     core_1.NgModule({
-        imports: [platform_browser_1.BrowserModule],
-        declarations: [app_component_1.AppComponent],
-        bootstrap: [app_component_1.AppComponent]
+        providers: [product_repository_1.ProductRepository, static_datasource_1.StaticDataSource]
     }), 
     __metadata('design:paramtypes', [])
-], AppModule);
-exports.AppModule = AppModule;
+], ModelModule);
+exports.ModelModule = ModelModule;
