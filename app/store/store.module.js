@@ -13,12 +13,13 @@ const platform_browser_1 = require("@angular/platform-browser");
 const forms_1 = require("@angular/forms");
 const model_module_1 = require("../model/model.module");
 const store_component_1 = require("./store.component");
+const counter_directive_1 = require("./counter.directive");
 let StoreModule = class StoreModule {
 };
 StoreModule = __decorate([
     core_1.NgModule({
         imports: [model_module_1.ModelModule, platform_browser_1.BrowserModule, forms_1.FormsModule],
-        declarations: [store_component_1.StoreComponent],
+        declarations: [store_component_1.StoreComponent, counter_directive_1.CounterDirective],
         exports: [store_component_1.StoreComponent]
     }), 
     __metadata('design:paramtypes', [])

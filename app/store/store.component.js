@@ -13,12 +13,36 @@ const product_repository_1 = require("../model/product.repository");
 let StoreComponent = class StoreComponent {
     constructor(repository) {
         this.repository = repository;
+        this.selectedCategory = null;
+        this.productsPerPage = 4;
+        this.selectedPage = 1;
     }
     get products() {
-        return this.repository.getProducts();
+        let pageIndex = (this.selectedPage - 1) * this.productsPerPage;
+        return this.repository.getProducts(this.selectedCategory)
+            .slice(pageIndex, pageIndex + this.productsPerPage);
     }
     get categories() {
         return this.repository.getCategories();
+    }
+    changeCategory(newCategory) {
+        this.selectedCategory = newCategory;
+    }
+    changePage(newPage) {
+        this.selectedPage = newPage;
+    }
+    changePageSize(newSize) {
+        this.productsPerPage = Number(newSize);
+        this.changePage(1);
+    }
+    // get pageNumbers(): number[] {
+    //     return Array(Math.ceil(this.repository
+    //         .getProducts(this.selectedCategory).length / this.productsPerPage))
+    //             .fill(0).map((x, i) => i + 1);
+    // }
+    get pageCount() {
+        return Math.ceil(this.repository
+            .getProducts(this.selectedCategory).length / this.productsPerPage);
     }
 };
 StoreComponent = __decorate([
