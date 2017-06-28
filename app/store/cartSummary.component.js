@@ -9,15 +9,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 const core_1 = require("@angular/core");
-const product_repository_1 = require("./product.repository");
-const static_datasource_1 = require("./static.datasource");
-const cart_model_1 = require("./cart.model");
-let ModelModule = class ModelModule {
+const cart_model_1 = require("../model/cart.model");
+let CartSummaryComponent = class CartSummaryComponent {
+    constructor(cart) {
+        this.cart = cart;
+    }
 };
-ModelModule = __decorate([
-    core_1.NgModule({
-        providers: [product_repository_1.ProductRepository, static_datasource_1.StaticDataSource, cart_model_1.Cart]
+CartSummaryComponent = __decorate([
+    core_1.Component({
+        selector: "cart-summary",
+        moduleId: module.id,
+        templateUrl: "cartSummary.component.html"
     }), 
-    __metadata('design:paramtypes', [])
-], ModelModule);
-exports.ModelModule = ModelModule;
+    __metadata('design:paramtypes', [cart_model_1.Cart])
+], CartSummaryComponent);
+exports.CartSummaryComponent = CartSummaryComponent;

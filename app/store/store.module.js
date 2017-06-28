@@ -14,12 +14,13 @@ const forms_1 = require("@angular/forms");
 const model_module_1 = require("../model/model.module");
 const store_component_1 = require("./store.component");
 const counter_directive_1 = require("./counter.directive");
+const cartsummary_component_1 = require("./cartsummary.component");
 let StoreModule = class StoreModule {
 };
 StoreModule = __decorate([
     core_1.NgModule({
         imports: [model_module_1.ModelModule, platform_browser_1.BrowserModule, forms_1.FormsModule],
-        declarations: [store_component_1.StoreComponent, counter_directive_1.CounterDirective],
+        declarations: [store_component_1.StoreComponent, counter_directive_1.CounterDirective, cartsummary_component_1.CartSummaryComponent],
         exports: [store_component_1.StoreComponent]
     }), 
     __metadata('design:paramtypes', [])
