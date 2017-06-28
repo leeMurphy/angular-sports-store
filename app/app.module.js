@@ -12,11 +12,23 @@ const core_1 = require("@angular/core");
 const platform_browser_1 = require("@angular/platform-browser");
 const app_component_1 = require("./app.component");
 const store_module_1 = require("./store/store.module");
+const store_component_1 = require("./store/store.component");
+const checkout_component_1 = require("./store/checkout.component");
+const cartDetail_component_1 = require("./store/cartDetail.component");
+const router_1 = require("@angular/router");
+const storeFirst_guard_1 = require("./storeFirst.guard");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     core_1.NgModule({
-        imports: [platform_browser_1.BrowserModule, store_module_1.StoreModule],
+        imports: [platform_browser_1.BrowserModule, store_module_1.StoreModule,
+            router_1.RouterModule.forRoot([
+                { path: "store", component: store_component_1.StoreComponent, canActivate: [storeFirst_guard_1.StoreFirstGuard] },
+                { path: "cart", component: cartDetail_component_1.CartDetailComponent, canActivate: [storeFirst_guard_1.StoreFirstGuard] },
+                { path: "checkout", component: checkout_component_1.CheckoutComponent, canActivate: [storeFirst_guard_1.StoreFirstGuard] },
+                { path: "**", redirectTo: "/store" }
+            ])],
+        providers: [storeFirst_guard_1.StoreFirstGuard],
         declarations: [app_component_1.AppComponent],
         bootstrap: [app_component_1.AppComponent]
     }), 

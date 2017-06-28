@@ -15,13 +15,16 @@ const model_module_1 = require("../model/model.module");
 const store_component_1 = require("./store.component");
 const counter_directive_1 = require("./counter.directive");
 const cartsummary_component_1 = require("./cartsummary.component");
+const cartDetail_component_1 = require("./cartDetail.component");
+const checkout_component_1 = require("./checkout.component");
+const router_1 = require("@angular/router");
 let StoreModule = class StoreModule {
 };
 StoreModule = __decorate([
     core_1.NgModule({
-        imports: [model_module_1.ModelModule, platform_browser_1.BrowserModule, forms_1.FormsModule],
-        declarations: [store_component_1.StoreComponent, counter_directive_1.CounterDirective, cartsummary_component_1.CartSummaryComponent],
-        exports: [store_component_1.StoreComponent]
+        imports: [model_module_1.ModelModule, platform_browser_1.BrowserModule, forms_1.FormsModule, router_1.RouterModule],
+        declarations: [store_component_1.StoreComponent, counter_directive_1.CounterDirective, cartsummary_component_1.CartSummaryComponent, cartDetail_component_1.CartDetailComponent, checkout_component_1.CheckoutComponent],
+        exports: [store_component_1.StoreComponent, cartDetail_component_1.CartDetailComponent, checkout_component_1.CheckoutComponent]
     }), 
     __metadata('design:paramtypes', [])
 ], StoreModule);

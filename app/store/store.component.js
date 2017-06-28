@@ -11,10 +11,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 const core_1 = require("@angular/core");
 const product_repository_1 = require("../model/product.repository");
 const cart_model_1 = require("../model/cart.model");
+const router_1 = require("@angular/router");
 let StoreComponent = class StoreComponent {
-    constructor(repository, cart) {
+    constructor(repository, cart, router) {
         this.repository = repository;
         this.cart = cart;
+        this.router = router;
         this.selectedCategory = null;
         this.productsPerPage = 4;
         this.selectedPage = 1;
@@ -48,6 +50,7 @@ let StoreComponent = class StoreComponent {
     }
     addProductToCart(product) {
         this.cart.addLine(product);
+        this.router.navigateByUrl("/cart");
     }
 };
 StoreComponent = __decorate([
@@ -56,6 +59,6 @@ StoreComponent = __decorate([
         moduleId: module.id,
         templateUrl: "store.component.html"
     }), 
-    __metadata('design:paramtypes', [product_repository_1.ProductRepository, cart_model_1.Cart])
+    __metadata('design:paramtypes', [product_repository_1.ProductRepository, cart_model_1.Cart, router_1.Router])
 ], StoreComponent);
 exports.StoreComponent = StoreComponent;
