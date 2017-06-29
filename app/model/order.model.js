@@ -9,17 +9,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 const core_1 = require("@angular/core");
-const product_repository_1 = require("./product.repository");
-const static_datasource_1 = require("./static.datasource");
 const cart_model_1 = require("./cart.model");
-const order_model_1 = require("./order.model");
-const order_repository_1 = require("./order.repository");
-let ModelModule = class ModelModule {
+let Order = class Order {
+    constructor(cart) {
+        this.cart = cart;
+        this.shipped = false;
+    }
+    clear() {
+        this.id = null;
+        this.name = this.address = this.city = null;
+        this.state = this.zip = this.country = null;
+        this.shipped = false;
+        this.cart.clear();
+    }
 };
-ModelModule = __decorate([
-    core_1.NgModule({
-        providers: [product_repository_1.ProductRepository, static_datasource_1.StaticDataSource, cart_model_1.Cart, order_model_1.Order, order_repository_1.OrderRepository]
-    }), 
-    __metadata('design:paramtypes', [])
-], ModelModule);
-exports.ModelModule = ModelModule;
+Order = __decorate([
+    core_1.Injectable(), 
+    __metadata('design:paramtypes', [cart_model_1.Cart])
+], Order);
+exports.Order = Order;
