@@ -26,6 +26,7 @@ AppModule = __decorate([
                 { path: "store", component: store_component_1.StoreComponent, canActivate: [storeFirst_guard_1.StoreFirstGuard] },
                 { path: "cart", component: cartDetail_component_1.CartDetailComponent, canActivate: [storeFirst_guard_1.StoreFirstGuard] },
                 { path: "checkout", component: checkout_component_1.CheckoutComponent, canActivate: [storeFirst_guard_1.StoreFirstGuard] },
+                { path: "admin", loadChildren: "app/admin/admin.module#AdminModule", canActivate: [storeFirst_guard_1.StoreFirstGuard] },
                 { path: "**", redirectTo: "/store" }
             ])],
         providers: [storeFirst_guard_1.StoreFirstGuard],

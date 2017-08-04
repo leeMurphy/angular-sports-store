@@ -10,40 +10,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 const core_1 = require("@angular/core");
 const rest_datasource_1 = require("./rest.datasource");
-let OrderRepository = class OrderRepository {
-    constructor(dataSource) {
-        this.dataSource = dataSource;
-        this.orders = [];
-        this.loaded = false;
+require("rxjs/add/operator/map");
+let AuthService = class AuthService {
+    constructor(datasource) {
+        this.datasource = datasource;
     }
-    loadOrders() {
-        this.loaded = true;
-        this.dataSource.getOrders()
-            .subscribe(orders => this.orders = orders);
+    authenticate(username, password) {
+        return this.datasource.authenticate(username, password);
     }
-    getOrders() {
-        if (!this.loaded) {
-            this.loadOrders();
-        }
-        return this.orders;
+    get authenticated() {
+        return this.datasource.auth_token != null;
     }
-    saveOrder(order) {
-        return this.dataSource.saveOrder(order);
-    }
-    updateOrder(order) {
-        this.dataSource.updateOrder(order).subscribe(order => {
-            this.orders.splice(this.orders.
-                findIndex(o => o.id == order.id), 1, order);
-        });
-    }
-    deleteOrder(id) {
-        this.dataSource.deleteOrder(id).subscribe(order => {
-            this.orders.splice(this.orders.findIndex(o => id == o.id));
-        });
+    clear() {
+        this.datasource.auth_token = null;
     }
 };
-OrderRepository = __decorate([
+AuthService = __decorate([
     core_1.Injectable(), 
     __metadata('design:paramtypes', [rest_datasource_1.RestDataSource])
-], OrderRepository);
-exports.OrderRepository = OrderRepository;
+], AuthService);
+exports.AuthService = AuthService;
