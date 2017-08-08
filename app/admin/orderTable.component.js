@@ -9,23 +9,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 const core_1 = require("@angular/core");
-const router_1 = require("@angular/router");
-const auth_service_1 = require("../model/auth.service");
-let AdminComponent = class AdminComponent {
-    constructor(auth, router) {
-        this.auth = auth;
-        this.router = router;
-    }
-    logout() {
-        this.auth.clear();
-        this.router.navigateByUrl("/");
-    }
+let OrderTableComponent = class OrderTableComponent {
 };
-AdminComponent = __decorate([
+OrderTableComponent = __decorate([
     core_1.Component({
-        moduleId: module.id,
-        templateUrl: "admin.component.html"
+        template: `<div class="bg-primary p-a-1">
+                <h3>Order Table Placeholder</h3>
+                </div>`
     }), 
-    __metadata('design:paramtypes', [auth_service_1.AuthService, router_1.Router])
-], AdminComponent);
-exports.AdminComponent = AdminComponent;
+    __metadata('design:paramtypes', [])
+], OrderTableComponent);
+exports.OrderTableComponent = OrderTableComponent;
