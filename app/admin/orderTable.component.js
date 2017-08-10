@@ -9,14 +9,29 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 const core_1 = require("@angular/core");
+const order_repository_1 = require("../model/order.repository");
 let OrderTableComponent = class OrderTableComponent {
+    constructor(repository) {
+        this.repository = repository;
+        this.includeShipped = false;
+    }
+    getOrders() {
+        return this.repository.getOrders()
+            .filter(o => this.includeShipped || !o.shipped);
+    }
+    markShipped(order) {
+        order.shipped = true;
+        this.repository.updateOrder(order);
+    }
+    delete(id) {
+        this.repository.deleteOrder(id);
+    }
 };
 OrderTableComponent = __decorate([
     core_1.Component({
-        template: `<div class="bg-primary p-a-1">
-                <h3>Order Table Placeholder</h3>
-                </div>`
+        moduleId: module.id,
+        templateUrl: "orderTable.component.html"
     }), 
-    __metadata('design:paramtypes', [])
+    __metadata('design:paramtypes', [order_repository_1.OrderRepository])
 ], OrderTableComponent);
 exports.OrderTableComponent = OrderTableComponent;
